@@ -1,6 +1,7 @@
 from hdfs import InsecureClient
 import os
 import sys
+import platform
 from multiprocessing import Pool
 # Configuração do client HDFS
 hdfs_host = 'http://localhost:9870'  # Altere para o host e porta do seu HDFS
@@ -22,8 +23,7 @@ def move_files_to_hdfs(local_dir ,hdfs_dir):
         print(f"Arquivo {file} removido localmente")
 
 #Ajuste ambiente
-ambiente = str(sys.argv[1])
-if ambiente == "local":
+if platform.system() == "Windows":
     path = "C:"
 else:
     path = "/mnt/c"
